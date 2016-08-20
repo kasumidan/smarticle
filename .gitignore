@@ -1,0 +1,34 @@
+.bundle/
+log/*.log
+pkg/
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
+spec/dummy/log/*.log
+spec/dummy/tmp/
+spec/dummy/.sass-cache
+
+
+# bowerパッケージを外す
+/vendor/assets/bower_components
+
+# rbenvのrubyのバージョン情報
+/.ruby-version
+
+# Ignore sublime project settings
+*.sublime-*
+
+# Ignore vim files
+.*.swp
+.vim-bookmarks
+
+# Ignore Mac OSX files
+.DS_Store
+
+# Ignore rdoc
+/doc
+
+# Ignore dump.rdb
+/dump.rdb
+
+# User uploaded file
+/public/system/*

@@ -1,0 +1,56 @@
+.edit-smarticle-article
+  - if @article.title.present?
+    #article-title
+      = render 'edit_title'
+
+  
+  #sections
+    = render partial: "smarticle_sections/edit/section", collection: @article.sections.order(:display_order)
+
+
+  .add-section
+    .action
+      = link_to polymorphic_path([:new, @article, :smarticle_section], section_type: 'text'), remote: true, method: :get, title: t('smarticle.add_text') do
+        = fa_icon 'file-text-o'
+
+    - unless ['text', 'simple_text'].include?(@article.article_type)
+      .action
+        = link_to polymorphic_path([:new, @article, :smarticle_section], section_type: 'image'), remote: true, method: :get, title: t('smarticle.add_pictures') do
+          = fa_icon 'image'
+
+      .action
+        = link_to polymorphic_path([:new, @article, :smarticle_section], section_type: 'video'), remote: true, method: :get, title: t('smarticle.add_video') do
+          = fa_icon 'file-video-o'
+
+      .action.float-right
+        = link_to @article, target: '_blank'
+          = fa_icon 'eye'
+
+- if params[:return_to].present?
+    .return-to
+      = link_to params[:return_to] do
+        =fa_icon 'arrow-left'
+        | &nbsp;
+        = t('smarticle.go_back')
+
+javascript:
+  var el = document.getElementById('sections');
+  var sortable = Sortable.create(el, {
+    handle: '.sortable-handle',
+    draggable: "section",
+    onUpdate: function (/**Event*/evt) {
+      evt.oldIndex;
+      evt.newIndex;
+
+      var sid = evt.item.id.split('-')[1]
+    
+      $.post("/smarticle_articles/#{@article.id}/smarticle_sections/orders.js", { sid: sid, newIndex: evt.newIndex, oldIndex: evt.oldIndex })
+    },
+  });
+
+  function changeSectionWidth(w, sid) {
+    $.ajax({url: "/smarticle_sections/"+sid+"/", data: {smarticle_section: {width: w}}, type: 'patch'});
+  }
+
+  
+  

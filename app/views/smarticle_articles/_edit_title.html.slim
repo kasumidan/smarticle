@@ -1,0 +1,7 @@
+#article-title
+  h2
+    = @article.title
+    .edit-artitle-title
+      = link_to edit_smarticle_article_path(id: @article, return_to: params[:return_to]), remote: true do
+        = fa_icon 'edit'
+

@@ -1,0 +1,27 @@
+- count = section.pictures.count
+
+.section-images style="position: relative"
+  .section-title= section.title
+  .row
+    - section.pictures.each_with_index do |pic, idx|  
+      - if count == 4
+        - cls = 'col-sm-6'
+      - else
+        - if idx < count.div(3)*3
+          - cls = 'col-sm-4'
+        - elsif count % 3 == 2
+          - cls = 'col-sm-6'
+        - else
+          - cls = 'col-sm-12'
+      div class="#{cls} image-container"
+        .text-center.section-image-thumb
+          = link_to pic.image.url(:original) do
+            =image_tag pic.image.url(:medium), class: 'img-responsive'
+          - if ['edit', 'update', 'destroy', 'create'].include?(action_name) && count > 1
+            .remove-btn
+              =button_to pic, method: :delete, remote: true
+                =fa_icon 'times'
+
+  - unless defined?(show_description) && !show_description
+    .image-description
+      = simple_format(section.txt)

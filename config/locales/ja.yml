@@ -1,0 +1,25 @@
+ja:
+  smarticle:
+    save: 保存
+    edit: 編集
+    delete: 削除
+    confirm_delete: 本当に削除しますか？ 
+    add_pictures: 画像を追加
+    add_text: テキストを追加
+    add_video: 動画を追加
+    add_new: 新規作成
+    image_upload_maxfilesexceeded: 一度にアップロードできる画像数は%{max}枚です。
+    image_upload_message: クリックして画像ファイルをアップロード（一度に%{max}枚まで）
+    write_comment: コメントを書く
+    go_back: 戻る
+
+    section_form:
+      title: タイトルをご入力ください（省略可）
+      image_txt_placeholder: 画像の説明をご入力ください。画像の下に表示されます（省略可）
+      text_txt_placeholder: セクション（節）の内容をご入力ください
+      save: 保存
+      confirm: 確認
+      cancel: 取消
+
+    error:
+      video_link_incorrect: 入力した動画リンクは正しくありません。

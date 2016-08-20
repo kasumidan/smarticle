@@ -1,0 +1,11 @@
+.article id="article-#{article.id}"
+  h3.title=article.title
+  .summary = truncate(sanitize(article.txt), length: 200)
+  .actions
+    .action
+      a 
+      = link_to article, remote: true, method: :delete, title: t('smarticle.delete'), data: {confirm: t('smarticle.confirm_delete')} do
+        = fa_icon 'trash-o'
+    .action
+      = link_to edit_smarticle_article_path(id: article, return_to: request.original_fullpath), title: t('smarticle.edit') do
+        = fa_icon 'edit'

@@ -1,0 +1,26 @@
+en:
+  smarticle:
+    save: Save
+    edit: Edit
+    delete: Delete
+    confirm_delete: Do you really want to delete this?
+    add_pictures: Add Pictures
+    add_text: Add Text
+    add_video: Add Video
+    add_new: Add New
+    image_upload_maxfilesexceeded: "%{max} pictures one time, please."
+    image_upload_message: "Drop files here or click to upload. (maximum number: %{max})"
+    write_comment: New Comment
+    go_back: Go Back
+
+    section_form:
+      title: title (optional)
+      image_txt_placeholder: image description (optional)
+      text_txt_placeholder: description (optional)
+      save: Save
+      confirm: Confirm
+      cancel: Cancel
+
+    error:
+      video_link_incorrect: The video link is incorrect.
+

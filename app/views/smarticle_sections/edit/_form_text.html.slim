@@ -1,0 +1,26 @@
+=form_for [@article, @section], remote: true, html: {role: 'form', class: 'form-horizontal'} do |f|
+  = f.hidden_field :section_type, value: @section.section_type
+  - if enable_title
+    .form-group
+      =f.text_field :title, placeholder: t('smarticle.section_form.title'), class: 'form-control'
+  .form-group.text
+    - str = @section.section_type == 'image' ? t('smarticle.section_form.image_txt_placeholder') : t('smarticle.section_form.text_txt_placeholder')
+    =f.text_area :txt, placeholder: str, class: 'form-control auto-height'
+  
+  .form-group
+    // cancel button
+    - if @section.id
+      button.cancel.btn.btn-default.btn-sm type='button'
+        =t('smarticle.section_form.cancel')
+      span &nbsp;
+
+      javascript:
+        $('button.cancel').click(function(){
+        $.post( "#{cancel_section_edit_path(id: @section)}")} )
+    - else
+      button.cancel.btn.btn-default.btn-sm type="button" onClick="$('#new-section').remove();"
+        =t('smarticle.section_form.cancel')
+      span &nbsp;
+
+    button.btn.btn-primary.btn-sm
+      =t('smarticle.section_form.save')

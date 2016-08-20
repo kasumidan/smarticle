@@ -1,0 +1,19 @@
+// new picture section
+- unless @section.id
+  =form_for [@article, @picture], html: {multipart: true, class: "dropzone", id: "article-images-dropzone"} do |f|
+    .fallback
+      =file_field_tag 'images[]', multiple: true
+      =f.submit
+
+  // cancel button
+  .cancel style="margin-top: 10px"
+    button.btn.btn-default.btn-sm type="button" onClick="$('#new-section').remove();"
+      =t('smarticle.section_form.cancel')
+
+// add picture description
+- else
+  // better to show the picture while write the description
+  =render 'smarticle_sections/show/pictures', section: @section, show_description: false
+  =render 'smarticle_sections/edit/form_text', enable_title: false
+
+    

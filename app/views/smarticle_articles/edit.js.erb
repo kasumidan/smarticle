@@ -1,0 +1,5 @@
+<% if action_name == 'update' && @article.errors.blank? %>
+  $('#article-title').html("<%= j render 'edit_title' %>")
+<% else %>
+  $('#article-title').html("<%= j render 'form' %>");
+<% end %>

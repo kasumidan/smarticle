@@ -1,0 +1,230 @@
+@media print, screen and (min-width: 768px) {
+
+  .width-100 {
+    width: 100%;
+  }
+
+  .width-50 {
+    width: 50%;
+    float: left;
+  }
+
+  .width-33 {
+    width: 33%;
+    float: left;
+  }
+
+  .width-66 {
+    width: 66%;
+    float: left;
+  }
+}
+
+#article-title {
+  margin-bottom: 15px;
+  .edit-artitle-title {
+    display: inline;
+    font-size: 14px;
+  } 
+}
+
+.article-form {
+  margin-top: 30px;
+}
+
+.section-images {
+  .image-container {
+    position: relative;
+  }
+
+  .section-image-thumb {
+    overflow: hidden;
+
+    img {
+      margin: 0 auto;
+    }
+
+    .remove-btn {
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+    }
+  }
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+
+//
+// space between sections and image containers 
+// for edit article and front article are different
+//
+.smarticle-article {
+  section.article-section {
+    padding: 10px;
+  }
+  .image-container {
+    margin-bottom: 0;
+  }
+  margin-bottom: 0;
+
+  .return-to {
+    margin-left: 10px;
+  }
+}
+
+
+
+// Edit Article
+.edit-smarticle-article {
+
+  section.article-section {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+
+    .section-form {
+      padding: 15px;
+    }
+
+    .section-actions {
+      text-align: right;
+      background: #efefef;
+      padding: 10px 5px;
+
+
+      .action {
+        display: inline-block;
+        margin-left: 3px;
+        padding: 0 2px;
+
+        &.change-width {
+          background: #fff;
+          border: 1px solid #dfdfdf;
+          padding: 1px 5px;
+          border-radius: 3px;
+          img {
+            width: 14px;
+            margin-left: 8px;
+            &:hover {
+              border: 1px solid #333;
+              cursor: pointer;
+            }
+          }
+          img:first-child {
+            margin-left: 0;
+          }
+        }
+
+        &.sortable-handle {
+          background: #fff;
+          cursor: move;
+          cursor: -webkit-grabbing;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+          padding: 3px 5px;
+          font-size: 10px;
+          color: #666;
+        }
+      }
+
+      @media print, screen and (max-width: 767px) {
+        .action.change-width {display: none;}
+      }
+    }
+
+    .input-group select {
+      margin-left: -5px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .action.sortable-handle {
+        display: none;
+      }
+    }
+
+
+
+
+  }
+
+  .image-container {
+    margin-bottom: 10px;
+  }
+
+  .section-text {
+    position: relative;
+  }
+
+  .section-video {
+    margin-bottom: 10px;
+  }
+
+  .add-section {
+    clear: both;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding: 10px 5px;
+    .action {
+      display: inline-block;
+      margin-right: 15px;
+      a {
+        font-size: 1.25em;
+      }
+    }
+
+    .action.float-right {
+      float: right;
+    }
+    .action.float-right:after {
+      clear: right;
+    }
+  }
+}
+
+.smarticle-articles {
+  .article {
+    border: 1px solid #eee;
+    margin-bottom: 30px;
+    padding: 10px;
+    .title {
+      margin-top: 0;
+    }
+    .actions {
+      text-align: right;
+      .action {
+        display: inline;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+//////////////////////////////
+// make the textarea expand automatically
+// https://www.impressivewebs.com/textarea-auto-resize/
+textarea.auto-height {
+  width: 100%;
+  min-height: 100px;
+  padding: 5px;
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+.hiddendiv {
+  display: none;
+  white-space: pre-wrap;
+  width: 100%;
+  min-height: 100px;
+  padding: 5px;
+  word-wrap: break-word;
+}
+// end: make the textarea expand automatically
+
+

@@ -1,0 +1,14 @@
+.smarticle-articles
+  h1 =@title
+
+  #articles
+    = render partial: 'smarticle_articles/article', collection: @articles, as: :article
+
+  hr
+  - if params[:return_to]
+    = link_to params[:return_to] do
+        =fa_icon 'arrow-left', text: t('smarticle.go_back')
+    |&nbsp;
+  span.link-to-edit 
+    =link_to t('smarticle.add_new'), new_article_link(@smarticleable, {label: params[:label], return_to: request.original_fullpath})
+

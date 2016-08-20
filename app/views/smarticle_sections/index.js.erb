@@ -1,0 +1,7 @@
+$('#new-section').remove();
+<% if action_name == 'create' %>
+  $("#sections").append("<%= j render 'smarticle_sections/edit/section', section: @section %>");
+<% else %>
+  $("#sections").html("<%= j render partial: 'smarticle_sections/edit/section', collection: @article.sections.order(:display_order) %>");
+<% end %>
+

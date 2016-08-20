@@ -1,0 +1,26 @@
+- return_to = (opt && opt[:return_to]) ?  opt[:return_to] : request.original_fullpath
+- if article.present?
+  .article_with_sections id="article-#{article.id}" 
+    .row
+      - unless opt && opt[:only_edit]
+        = render(partial: 'smarticle_sections/show/section', collection: article.sections.order(:display_order), as: :section)
+
+    - if opt && opt[:editable]
+      hr
+      .text-right
+        .inline
+          = link_to article_link(article, {return_to: return_to}), method: :delete, data: {confirm: "この#{opt[:name] || '項目'}を削除してもよろしいですか？"}
+            button.btn.btn-xs.btn-simple 
+              = fa_icon 'times'
+          | &nbsp; &nbsp;
+          = link_to edit_article_link(article, {return_to: return_to})
+            button.btn.btn-xs.btn-simple 
+              = fa_icon 'edit'
+
+- elsif opt && opt[:add_new]
+  .add-new
+    - str = opt[:name].present? ? "#{opt[:name]}を新規作成" : '新規作成' 
+    - new_opt = {label: label, return_to: return_to}
+    - if opt[:new_opt]
+      - new_opt =  {label: label, return_to: return_to}.merge(opt[:new_opt])
+    = link_to str, new_article_link(owner, new_opt)

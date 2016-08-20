@@ -1,0 +1,25 @@
+// new video section
+- unless @section.id
+  =form_for [@article, @video], remote: true, html: {role: 'form', class: 'form-horizontal'} do |f|
+    = f.hidden_field :section_type, value: 'video'
+    .text-danger = @error
+    .form-group
+      .input-group
+        =text_field_tag :video_url, '', placeholder: 'YouTube動画のリンクを入力してください', class: 'form-control', id: "videoUrl"
+        span.input-group-btn
+          button.btn.btn-default type="button" onClick="checkYouTubeUrl($('#videoUrl').val())"
+            =t('smarticle.section_form.confirm')
+    .form-group.clearfix#youtubePreview  style="display: none"
+      .embed-responsive.embed-responsive-16by9 
+        iframe src=""
+    .form-group
+      button.btn.btn-sm.btn-default type="button" onClick="$('#new-section').remove();"
+        =t('smarticle.section_form.cancel')
+      | &nbsp;
+      button.btn.btn-sm.btn-primary =t('smarticle.section_form.save')
+  
+// add video description
+- else
+  // better to show the picture while write the description
+  =render 'smarticle_sections/show/video', section: @section, show_description: false
+  =render 'smarticle_sections/edit/form_text', enable_title: false

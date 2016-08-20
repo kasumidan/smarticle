@@ -1,0 +1,31 @@
+- sid = section.id ? "section-#{section.id}" : "new-section"
+
+section.article-section id="section-#{section.id}" class="col-sm-#{cal_section_col_num(section)}"
+  // section contents
+  - if section.section_type == 'image'
+    = render 'smarticle_sections/show/pictures', section: section
+  - elsif section.section_type == 'text'
+    = render 'smarticle_sections/show/text', section: section
+  - elsif section.section_type == 'video'
+    = render 'smarticle_sections/show/video', section: section
+  
+  // actions bar
+  .section-actions
+    .action.remove
+      =link_to section, remote: true, method: :delete, data: {confirm: "is it ok to delete the section?"} do
+        button.btn.btn-xs.btn-default 
+          = fa_icon 'times'
+      .action.edit
+        =link_to [:edit, section], remote: true do
+          button.btn.btn-xs.btn-default
+            =fa_icon 'edit'
+
+    - unless section.article.article_type == 'simple_text'
+      .action.change-width
+        = image_tag 'smarticle/width1.png', onClick: "changeSectionWidth(100, #{section.id})"
+        = image_tag 'smarticle/width2.png', onClick: "changeSectionWidth(66, #{section.id})"
+        = image_tag 'smarticle/width3.png', onClick: "changeSectionWidth(50, #{section.id})"
+        = image_tag 'smarticle/width4.png', onClick: "changeSectionWidth(33, #{section.id})"
+    .action.sortable-handle
+      span.glyphicon.glyphicon-sort
+

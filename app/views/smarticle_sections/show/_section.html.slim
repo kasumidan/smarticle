@@ -1,0 +1,7 @@
+section.article-section id="section-#{section.id}" class="col-sm-#{cal_section_col_num(section)}"
+  - if section.section_type == 'image'
+    = render 'smarticle_sections/show/pictures', section: section
+  - elsif section.section_type == 'text'
+    = render 'smarticle_sections/show/text', section: section
+  - elsif section.section_type == 'video'
+    = render 'smarticle_sections/show/video', section: section

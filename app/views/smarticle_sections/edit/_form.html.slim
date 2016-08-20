@@ -1,0 +1,15 @@
+- sid = @section.id ? "section-#{@section.id}" : "new-section"
+
+section.article-section class="col-sm-#{cal_section_col_num(@section)}" id="#{sid}"
+  .section-form
+    - if @section.section_type == 'image'
+      = render 'smarticle_sections/edit/form_picture'
+
+    - if @section.section_type == 'text'
+      - if @section.article.article_type == 'simple_text'
+        = render 'smarticle_sections/edit/form_text', enable_title: false
+      - else
+        = render 'smarticle_sections/edit/form_text', enable_title: true
+      
+    - elsif @section.section_type == "video"
+      = render 'smarticle_sections/edit/form_video'

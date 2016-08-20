@@ -1,0 +1,25 @@
+.article-form
+  = form_for @article, html: {class: 'form-inline'} do |f|
+    =f.hidden_field :smarticleable_id
+    =f.hidden_field :smarticleable_type
+    =f.hidden_field :label
+    =f.hidden_field :article_type
+    =hidden_field_tag :return_to, params[:return_to]
+
+
+    .form-group
+      = f.text_field :title, placeholder: 'title', required: true, class: "form-control"
+      - if params[:show_label] == 'yes'
+        = f.text_field :label, placeholder: 'label', class: "form-control"    
+   
+    button.button-canel.btn.btn-sm.btn-default type="button" onClick=";" 
+      = t('smarticle.section_form.cancel')
+    | &nbsp;
+
+    = f.submit value: t('smarticle.save'), class: 'btn btn-sm btn-primary'
+
+    - if @article.id
+      javascript:
+        $('.button-canel').click(function(){
+          $('#article-title').html("#{j render 'edit_title'}");
+        })

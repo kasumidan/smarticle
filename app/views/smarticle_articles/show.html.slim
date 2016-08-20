@@ -1,0 +1,14 @@
+.smarticle-article
+  - if @article.title.present?
+    #article-title
+      h2 = @article.title
+
+  #sections
+    = render partial: "smarticle_sections/show/section", collection: @article.sections.order(:display_order), as: :section
+
+  - if params[:return_to].present?
+    .return-to
+      = link_to params[:return_to] do
+        =fa_icon 'arrow-left'
+        | &nbsp;
+        = t('smarticle.go_back')

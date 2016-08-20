@@ -1,0 +1,31 @@
+if ($('#new-section').length == 0) {
+  $("#sections").append("<%= j render 'smarticle_sections/edit/form' %>");
+  autoHeightTextarea("#section-<%= @section.id%>");  
+} else {
+  $('#new-section').replaceWith("<%= j render 'smarticle_sections/edit/form' %>");
+  autoHeightTextarea("#new-section"); 
+}
+
+
+<% if @section.section_type == 'image' %>
+  Dropzone.autoDiscover = false;
+  $("#article-images-dropzone").dropzone({
+    createImageThumbnails: true,
+    maxFilesize: 5,
+    parallelUploads: 6,
+    maxFiles: 6,
+    uploadMultiple: true,
+    paramName: "images",
+    acceptedFiles: "image/*",
+    dictDefaultMessage: "<%= t('smarticle.image_upload_message', max: 6)%>",
+    completemultiple: function() {
+      if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+      }
+      location.reload();
+    },
+    /*maxfilesexceeded: function(file) {
+      this.removeFile(file);
+      alert('最大６枚まで！');
+    }*/
+  });
+<% end %>

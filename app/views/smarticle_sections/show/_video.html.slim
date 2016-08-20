@@ -1,0 +1,8 @@
+.section-video
+  .embed-responsive.embed-responsive-16by9
+    iframe src="//www.youtube.com/embed/#{section.video.video_id}"
+
+  - unless defined?(show_description) && !show_description
+    .image-description
+      = simple_format(section.txt)
+
